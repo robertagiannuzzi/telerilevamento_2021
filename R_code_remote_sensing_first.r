@@ -1,18 +1,26 @@
 #My first code in R 
 
 #install.packages("raster") già fatto 
-library(raster) 
+library(raster) #richiamiamo il pacchetto raster
+#carica in automatico anche il pacchetto sp che gestisce i dati raster all'interno del software
 #funzione brick è della libreria raster quindi non funzionerebbe senza il richiamo alla library raster
 
 setwd("C:/lab/")
 
 p224r63_2011 <- brick("p224r63_2011_masked.grd") #brick importa blocco immagini come unica immagine
-#file esterno a R poichè si trova nella cartella lab
+#file esterno a R poichè si trova nella cartella lab -> fra virgolette "
+#con <- facciamo una assegnazione
 p224r63_2011
 
 plot(p224r63_2011) #plot stampa a video
-#B1 riflette nella banda del blu, B2 nel verde, B3 nel rosso, B4 nell'infrarosso vicino, 
-#B5 nell'infrarosso medio, B6 nell'infrarosso termico, B7 nell'infrarosso sempre medio
+#Bande Landsat
+#B1 riflette nella banda del blu
+#B2 riflette nel verde
+#B3 riflette nel rosso
+#B4 riflette nell'infrarosso vicino 
+#B5 nell'infrarosso medio
+#B6 riflette nell'infrarosso termico
+#B7 riflette nell'infrarosso medio
 
 #stabiliamo variazione colori
 cl <-colorRampPalette(c("black","grey","light grey")) (100)
@@ -20,12 +28,27 @@ cl <-colorRampPalette(c("black","grey","light grey")) (100)
 #100 numero di livelli/colori intermedi; esterno alla funzione
 
 plot(p224r63_2011, col=cl)
+# 1° argomento del plot=immagine
+# 2° argomento = vettore dei colori
+#col significa colore, definisce infatti la scala cromatica
+
+dev.off() #chiude interfaccia grafica aperta
 
 #color change -> new
-cl <-colorRampPalette(c("green","magenta","orange","yellow")) (100)
-plot(p224r63_2011, col=cl)
+cln <-colorRampPalette(c("light blue","yellow","pink","magenta")) (250)
+plot(p224r63_2011, col=cln)
 
+#24/03/2021
 
+# $ simbolo per legare due oggetti
+plot(p224r63_2011$B1_sre) #plotta solo la banda B1
+
+# plot band 1 with a predefined colut ramp palette
+cl1<- colorRampPalette(c("light blue","blue", "purple")) (100)
+plot(p224r63_2011$B1_sre, col=cl1)
+dev.off()
+
+#funzione par serve per fare settaggio dei parametri grafici di un certo grafico che vogliamo creare
 
 #31/03/2021
 #Multitemporal set
