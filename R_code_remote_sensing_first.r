@@ -38,7 +38,7 @@ dev.off() #chiude interfaccia grafica aperta
 cln <-colorRampPalette(c("light blue","yellow","pink","magenta")) (250)
 plot(p224r63_2011, col=cln)
 
-#24/03/2021
+#-----------24/03/2021--------------------
 
 # $ simbolo per legare due oggetti
 plot(p224r63_2011$B1_sre) #plotta solo la banda B1
@@ -88,7 +88,41 @@ plot(p224r63_2011$B2_sre, col=clg)
 plot(p224r63_2011$B3_sre, col=clr)
 plot(p224r63_2011$B4_sre, col=clnir)
 
-#31/03/2021
+#----------26/03/2021-------------------------
+
+# RGB = "Red Green Blue", Schema visualizzazione colori
+#Visualizzazione in colori naturali: 
+#monto la banda R sul B3 che riflette nel rosso
+#monto la banda G sul B2 che riflette nel verde
+#monto la banda B sul B1 che riflette nel blu
+plotRGB(p224r63_2011, r=3,g=2, b=1, stretch ="lin")
+#argomento di stretch tra virgolette! -> stretchiamo i valori delle singole bande in modo lineare ("lin")
+# per evitare concentrazione del colore
+plotRGB(p224r63_2011, r=4,g=3, b=2, stretch ="lin")
+#la vegetazione diventa rossa perchè sulla banda R abbiamo montato la B4 -> Vegetazione ha alta riflettanza nell'infrarosso
+plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="lin")
+plotRGB(p224r63_2011, r=3,g=2, b=4, stretch ="lin")
+
+#Exercise: Mount a 4x4 multiframe
+pdf("primo_pdf.pdf") #usare " perchè usciamo da R
+par(mfrow=c(2,2))
+plotRGB(p224r63_2011, r=3,g=2, b=1, stretch ="lin")
+plotRGB(p224r63_2011, r=4,g=3, b=2, stretch ="lin")
+plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="lin")
+plotRGB(p224r63_2011, r=3,g=2, b=4, stretch ="lin")
+dev.off()
+
+#Stretch "hist" -> histogram, stretchiamo più al centro
+plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="hist")
+
+#Exercise: Par natural colours, false colours and false colours with histogram sretch
+par(mfcol=c(1,3))
+plotRGB(p224r63_2011, r=3,g=2, b=1, stretch ="lin")
+plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="lin")
+plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="hist")
+
+#----------31/03/2021-------------------------
+
 #Multitemporal set
 p224r63_1988 <- brick("p224r63_1988_masked.grd")
 p224r63_1988
