@@ -28,7 +28,7 @@ cl <-colorRampPalette(c("black","grey","light grey")) (100)
 #100 numero di livelli/colori intermedi; esterno alla funzione
 
 plot(p224r63_2011, col=cl)
-# 1° argomento del plot=immagine
+# 1° argomento = immagine
 # 2° argomento = vettore dei colori
 #col significa colore, definisce infatti la scala cromatica
 
@@ -43,12 +43,50 @@ plot(p224r63_2011, col=cln)
 # $ simbolo per legare due oggetti
 plot(p224r63_2011$B1_sre) #plotta solo la banda B1
 
-# plot band 1 with a predefined colut ramp palette
+# plot band 1 with a predefined color ramp palette
 cl1<- colorRampPalette(c("light blue","blue", "purple")) (100)
 plot(p224r63_2011$B1_sre, col=cl1)
 dev.off()
 
-#funzione par serve per fare settaggio dei parametri grafici di un certo grafico che vogliamo creare
+#funzione par serve per fare settaggio dei parametri grafici di un certo grafico che vogliamo creare -> creiamo un multiframe
+# 1 riga, 2 colonne
+par(mfrow=c(1,2))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+
+# mf = multiframe
+# row = il primo numero del vettore c indica il numero di righe
+# col = il primo numero del vettore c indica il numero di colonne
+
+# 2 righe, 1 colonna
+par(mfrow=c(2,1))
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+
+# plot the first four bands of Landsat
+par(mfrow=c(4,1)) # 4 righe, 1 colonna
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+
+# a quadrat of bands:
+par(mfrow=c(2,2)) # 2 righe, 2 colonna
+plot(p224r63_2011$B1_sre)
+plot(p224r63_2011$B2_sre)
+plot(p224r63_2011$B3_sre)
+plot(p224r63_2011$B4_sre)
+
+# a quadrat of bands with change color:
+par(mfrow=c(2,2))
+clb<- colorRampPalette(c("light blue","blue", "dark blue")) (100)
+clg<- colorRampPalette(c("light green","green", "dark green")) (100)
+clr<- colorRampPalette(c("yellow","orange", "red")) (100)
+clnir<- colorRampPalette(c("pink","magenta", "purple")) (100)
+plot(p224r63_2011$B1_sre, col=clb)
+plot(p224r63_2011$B2_sre, col=clg)
+plot(p224r63_2011$B3_sre, col=clr)
+plot(p224r63_2011$B4_sre, col=clnir)
 
 #31/03/2021
 #Multitemporal set
