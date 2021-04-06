@@ -115,7 +115,7 @@ dev.off()
 #Stretch "hist" -> histogram, stretchiamo più al centro
 plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="hist")
 
-#Exercise: Par natural colours, false colours and false colours with histogram sretch
+#Exercise: Par natural colours, false colours and false colours with histogram stretch
 par(mfcol=c(1,3))
 plotRGB(p224r63_2011, r=3,g=2, b=1, stretch ="lin")
 plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="lin")
@@ -123,15 +123,33 @@ plotRGB(p224r63_2011, r=3,g=4, b=2, stretch ="hist")
 
 #----------31/03/2021-------------------------
 
-#Multitemporal set
+#Multitemporal set -> Immagine 1988 della stessa zona
 p224r63_1988 <- brick("p224r63_1988_masked.grd")
 p224r63_1988
 
 plot(p224r63_2011) #plottiamo le singole bande
-plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin")
-plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin")
+plotRGB(p224r63_1988, r=3, g=2, b=1, stretch="Lin") #Natural colors
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin") #False colours
 
-#creare un multiframe con par e poi inserire le due immagini 1988 e 2011
+#Exercise: Create multiframe with image 1988 and 2011
+par(mfrow=c(2,1))
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin") #False colours
+plotRGB(p224r63_2011, r=4,g=3, b=2, stretch ="lin") #False colours
+
+#Exercise: Create multiframe with image 1988 and 2011 
+#left -> 1988
+#right -> 2011
+#up -> stretch lin
+#down -> stretch hist
+pdf("multitemp.pdf")
+par(mfrow=c(2,2))
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="Lin") 
+plotRGB(p224r63_2011, r=4,g=3, b=2, stretch ="lin")
+plotRGB(p224r63_1988, r=4, g=3, b=2, stretch="hist") 
+plotRGB(p224r63_2011, r=4,g=3, b=2, stretch ="hist")
+#1988 passaggio graduale foresta - ambiente antropizzato
+#2011 passaggio netto foresta - ambiente antropizzato
+dev.off()
 
 
 
