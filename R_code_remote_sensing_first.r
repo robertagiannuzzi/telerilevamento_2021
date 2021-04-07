@@ -6,6 +6,7 @@ library(raster) #richiamiamo il pacchetto raster
 #funzione brick è della libreria raster quindi non funzionerebbe senza il richiamo alla library raster
 
 setwd("C:/lab/")
+#Imposta cartella di lavoro
 
 p224r63_2011 <- brick("p224r63_2011_masked.grd") #brick importa blocco immagini come unica immagine
 #file esterno a R poichè si trova nella cartella lab -> fra virgolette "
