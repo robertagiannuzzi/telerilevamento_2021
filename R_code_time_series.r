@@ -9,6 +9,8 @@ library(raster)
 
 setwd("C:/lab/Greenland") 
 
+#--------- 7/04/2021------------
+
 # 1° Metodo
 lst_2000 <- raster("lst_2000.tif")
 #funzione raster (del pacchetto raster) serve per caricare dei singoli dati
