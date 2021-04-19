@@ -14,4 +14,4 @@ require(knitr) #require=library
 # stitch genera report automaticamente partendo da uno script r
 # 1° argomento = file di testo dello script r
 # 2° argomento = template
-stitch("R_code_Greenland.r.tex", template=system.file("misc", "knitr-template.Rnw", package="knitr"))
+stitch("R_code_time_series.r", template=system.file("misc", "knitr-template.Rnw", package="knitr"))
