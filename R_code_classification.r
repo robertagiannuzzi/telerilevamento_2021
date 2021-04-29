@@ -57,9 +57,12 @@ gc
 
 plotRGB(gc, r=1, g=2, b=3, stretch="lin")
 plotRGB(gc, r=1, g=2, b=3, stretch="hist")
-#
+# con histogram sono evidenziate le zone d'ombra (possibile litologia differente)
 
 gcc2 <- unsuperClass(gc, nClasses= 2)
 plot(gcc2$map)
 
+gcc4 <- unsuperClass(gc, nClasses= 4)
+plot(gcc4$map)
+ 
 
