@@ -45,3 +45,21 @@ sun <- brick("The_many_faces_of_the_Sun_from_Solar_Orbiter_s_EUI_and_PHI_instrum
 sunc <- unsuperClass(sun, nClasses= 3)
 plot(sunc$map)
 
+# Download Solar Orbiter data and proceed further!
+
+#------ 23/04/2021---------
+
+# Grand Canyon
+# Link Immagine: https://landsat.visibleearth.nasa.gov/view.php?id=80948
+
+gc <- brick("dolansprings_oli_2013088_canyon_lrg.jpg")
+gc
+
+plotRGB(gc, r=1, g=2, b=3, stretch="lin")
+plotRGB(gc, r=1, g=2, b=3, stretch="hist")
+#
+
+gcc2 <- unsuperClass(gc, nClasses= 2)
+plot(gcc2$map)
+
+
