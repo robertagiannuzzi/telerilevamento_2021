@@ -2,6 +2,10 @@
 
 library(raster)
 library(RStoolbox) # for vegetation indices calculation
+#install.packages("rasterdiv")
+library(rasterdiv) # for the worldwide NDVI
+library(rasterVis)
+
 setwd("C:/lab/")
 
 defor1 <- brick("defor1.jpg")
@@ -64,4 +68,23 @@ vi1 <- spectralIndices(defor1, green =3, red =2, nir =1)
 plot(vi1, col=cl)
 vi2 <- spectralIndices(defor2, green = 3, red = 2, nir = 1)
 plot(vi2, col=cl)
+
+#worldwide NDVI
+plot(copNDVI)
+
+# I pixel con valori 253, 254 e 255 (individuano acqua) possono essere settati come un Not a number
+
+copNDVI <- reclassify (copNDVI, cbind(253:255, NA))
+# riclassifichiamo l'immagine iniziale copNDVI
+# riclassifichiamo i pixel da 253 a 255 (da...a... -> :)
+# riclassificati come NA, li eliminiamo
+   
+plot(copNDVI)
+
+# usiamo la libreria rasterVis
+levelplot(copNDVI)
+
+#nella zona dell'equatore si ha il massimo della biomassa
+
+
 
